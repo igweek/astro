@@ -1,60 +1,18 @@
 ---
-import { getCollection } from "astro:content";
-
-export interface Props {
-  count?: number;
-}
-
-const { count = 6 } = Astro.props;
-
-// 获取并排序文章
-const posts = await getCollection("post")
-  .then((posts) =>
-    posts.sort(
-      (a, b) =>
-        new Date(b.data.dateFormatted).getTime() -
-        new Date(a.data.dateFormatted).getTime()
-    )
-  )
-  .then((sorted) => sorted.slice(0, count));
+import PageHeading from "../components/page-heading.astro";
+import PostsLoop from "../components/posts-loop.astro";
+import Layout from "../layouts/main.astro";
 ---
 
-<>
-  {posts.map((post) => (
-    <!-- 关键：确保每个文章项都有data-slug属性 -->
-    <article data-slug={post.slug} class="group relative pb-8 border-b border-neutral-200 dark:border-neutral-700 last:border-0">
-      <a
-        href={`/post/${post.slug}`}
-        class="absolute inset-0 z-10 cursor-pointer"
-      ></a>
-      <h2 class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-        {post.data.title}
-      </h2>
-      <div class="flex items-center mt-2 text-sm text-neutral-500 dark:text-neutral-400">
-        <time>{post.data.dateFormatted}</time>
-      </div>
-      <p class="mt-3 text-neutral-700 dark:text-neutral-300">
-        {post.data.description}
-      </p>
-      <div class="mt-4">
-        <span class="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400">
-          Read more
-          <svg
-            class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M14 5l7 7m0 0l-7 7m7-7H3"
-            ></path>
-          </svg>
-        </span>
-      </div>
-    </article>
-  ))}
-</>
-    
+<Layout title="My Writing">
+  <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
+    <PageHeading
+      title="My Writing"
+      description="Dive into my musings on life and tech in my latest posts; a blend of introspection and innovation. Keep an eye out for fresh insights and updates!"
+    />
+
+    <div class="z-50 flex flex-col items-stretch w-full gap-5 my-8">
+      <PostsLoop count="999999999" />
+    </div>
+  </section>
+</Layout>
