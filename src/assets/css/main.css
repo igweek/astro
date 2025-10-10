@@ -1,0 +1,338 @@
+/* New styles adapted from user's request */
+
+/* Global Prose Configuration */
+.prose {
+  color: #595959;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  line-height: 1.8em;
+  background-image: linear-gradient(
+      90deg,
+      rgba(60, 10, 30, 0.05) 3%,
+      transparent 0
+    ),
+    linear-gradient(1turn, rgba(60, 10, 30, 0.05) 3%, transparent 0);
+  background-size: 20px 20px;
+  background-position: 50%;
+  word-break: break-all;
+}
+
+.prose * {
+  box-sizing: border-box;
+}
+
+/* Element Styles */
+.prose blockquote {
+  margin-left: 0;
+  background-color: #ebf4ff;
+  border-color: #7f9cf5;
+  padding: 0.5rem 1rem;
+  color: #667eea;
+  border-left: 0.25em solid;
+}
+
+.prose blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.prose blockquote > :first-child {
+  margin-top: 0;
+}
+
+.prose strong {
+  color: #5a67d8;
+  font-weight: bold;
+}
+
+.prose strong::before {
+  content: "「";
+}
+
+.prose strong::after {
+  content: "」";
+}
+
+.prose code,
+.prose a {
+  color: #5a67d8;
+  font-weight: 500;
+  font-size: unset;
+}
+
+.prose a {
+  border-color: #667eea;
+  text-decoration: none;
+  border-bottom: 1px solid;
+}
+
+.prose a.footnote-ref {
+  border-width: 0px;
+}
+
+.prose :not(pre) > code {
+  background-color: #ebf4ff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+.prose blockquote,
+.prose details,
+.prose dl,
+.prose ol,
+.prose p,
+.prose pre,
+.prose table,
+.prose ul {
+  margin-bottom: 1rem;
+}
+
+.prose ol {
+  list-style: decimal;
+}
+
+.prose ul {
+  list-style: disc;
+}
+
+.prose ol,
+.prose ul {
+  padding-left: 2em;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+
+.prose h1,
+.prose h2 {
+  border-color: #5a67d8;
+  border-style: solid;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-bottom: 1px solid #eaecef !important;
+  border-left-width: 6px;
+}
+
+/* Images */
+.prose picture img {
+  border-radius: 6px;
+  display: block;
+  margin: 10px auto;
+  object-fit: contain;
+  box-shadow: 2px 4px 7px #999;
+}
+
+.prose img {
+  max-width: 100%;
+  display: block;
+  margin: 10px auto;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 2px 4px 7px #999;
+}
+
+.prose picture {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.prose .svg-markmap-box {
+  min-height: 20rem;
+  width: 100%;
+}
+
+.prose .footnotes {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Task Lists */
+.prose .task-list-item {
+  padding-left: 0.3rem;
+  list-style-type: none;
+}
+
+.prose .task-list-item > p {
+  transition: color 0.3s, opacity 0.3s;
+}
+
+.prose .task-list-item.task-list-done > p {
+  color: #525252;
+  text-decoration: line-through;
+}
+
+.prose .task-list-item.task-list-done > p > .md-emoji {
+  opacity: 0.5;
+}
+
+.prose .task-list-item.task-list-done > p > .md-link > a {
+  opacity: 0.6;
+}
+
+.prose .task-list-item > input {
+  -webkit-appearance: initial;
+  display: block;
+  position: absolute;
+  border: 1px solid #5a67d8;
+  border-radius: 0.25rem;
+  margin-left: -1.5rem;
+  height: 1.2rem;
+  width: 1.2rem;
+  transition: border-color 0.3s;
+  background-color: unset;
+}
+
+.prose .task-list-item > input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.prose .task-list-item > input:hover {
+  border-color: #5a67d8;
+}
+
+.prose .task-list-item > input[checked]::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  height: 60%;
+  width: 2px;
+  transform: rotate(40deg);
+  background: #5a67d8;
+}
+
+.prose .task-list-item > input[checked]::after {
+  content: "";
+  position: absolute;
+  top: 46%;
+  left: 25%;
+  height: 30%;
+  width: 2px;
+  transform: rotate(-40deg);
+  background: #5a67d8;
+}
+
+/* Code Blocks */
+.prose pre {
+  padding: 12px;
+  padding-top: 6px;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 6px;
+  color: #f8f8f2;
+  background: #272822;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 1em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+.prose pre::before {
+  content: "";
+  display: block;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDU0IDE0Ij4KICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEgMSkiPgogICAgPGNpcmNsZSBjeD0iNiIgY3k9IjYiIHI9IjYiIGZpbGw9IiNGRjVGNTYiIHN0cm9rZT0iI0UwNDQzRSIgc3Ryb2tlLXdpZHRoPSIuNSIvPgogICAgPGNpcmNsZSBjeD0iMjYiIGN5PSI2IiByPSI2IiBmaWxsPSIjRkZCRDJFIiBzdHJva2U9IiNERUExMjMiIHN0cm9rZS13aWR0aD0iLjUiLz4KICAgIDxjaXJjbGUgY3g9IjQ2IiBjeT0iNiIgcj0iNiIgZmlsbD0iIzI3QzkzRiIgc3Ryb2tlPSIjMUFBQjI5IiBzdHJva2Utd2lkdGg9Ii41Ii8+CiAgPC9nPgo8L3N2Zz4K");
+  height: 30px;
+  width: 100%;
+  margin-bottom: -7px;
+  background-size: 40px;
+  background-repeat: no-repeat;
+}
+
+.prose pre > code {
+  font-weight: 400;
+  color: unset;
+  line-height: 1.6;
+  background-color: transparent;
+  border-width: 0;
+  padding: 0;
+}
+
+/* Keep dark mode toggle animations */
+#sun {
+  transform: translate3d(0, 0px, 0);
+}
+
+#moon {
+  transform: translate3d(0, 0px, 0);
+}
+
+#darkToggle:hover #sun {
+  transform: translate3d(0, 10px, 0);
+}
+
+#darkToggle:hover #moon {
+  transform: translate3d(0, 10px, 0);
+}
+
+html.dark #darkToggle:hover .horizon {
+  border-color: #718096 !important;
+}
+
+html.dark {
+    color-scheme: dark;
+}
+
+.horizon .setting {
+  animation: 1s ease 0s 1 setting;
+}
+
+.horizon .rising {
+  animation: 1s ease 0s 1 rising;
+}
+
+@keyframes setting {
+  0% {
+    transform: translate3d(0, 10px, 0)
+  }
+
+  40% {
+    transform: translate3d(0, -2px, 0)
+  }
+
+  to {
+    transform: translate3d(0, 30px, 0)
+  }
+}
+
+@keyframes rising {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0)
+  }
+
+  40% {
+    opacity: 1;
+    transform: translate3d(0, -2px, 0)
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 10, 0)
+  }
+}
